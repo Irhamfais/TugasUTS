@@ -1,6 +1,7 @@
 import { appState } from './state.js';
 import { createRadarChart } from './chart.js';
 import { generateRecommendations } from './recommendations.js';
+import { QUESTION_GROUPS, countAllQuestions } from './questions.js';
 
 export function calculateResults() {
 	const cards = document.querySelectorAll('.question-card');
@@ -11,25 +12,38 @@ export function calculateResults() {
 		return;
 	}
 
-	const questionName = selectedOption.name;
+	const questionName = selectedOption.name; // item.id
 	const category = currentCard.dataset.category;
 	appState.answers[questionName] = parseInt(selectedOption.value);
-	appState.categoryScores[category] = parseInt(selectedOption.value);
 
-	const totalScore = Object.values(appState.answers).reduce((a, b) => a + b, 0);
-	const maxScore = appState.totalQuestions * 10;
-	const percentage = (totalScore / maxScore) * 100;
+	// Hitung skor total sebagai rata-rata agar skala 0-100
+	const allAnswers = Object.values(appState.answers);
+	const totalScore = allAnswers.reduce((a, b) => a + b, 0);
+	const percentage = totalScore / countAllQuestions();
+
+	// Hitung skor per kategori sebagai rata-rata item per kategori
+	const categoryAverages = { transportasi: 0, makanan: 0, energi: 0, sampah: 0 };
+	QUESTION_GROUPS.forEach(group => {
+		const ids = group.items.map(i => i.id);
+		const values = ids
+			.map(id => appState.answers[id])
+			.filter(v => typeof v === 'number');
+		if (values.length > 0) {
+			categoryAverages[group.category] = values.reduce((a, b) => a + b, 0) / values.length;
+		}
+	});
+	appState.categoryScores = categoryAverages;
 
 	document.getElementById('assessment').style.display = 'none';
 	document.getElementById('results').style.display = 'block';
 
-	displayResults(totalScore, percentage);
+	displayResults(percentage);
 	createRadarChart(appState.categoryScores);
 	generateRecommendations(appState.categoryScores);
 }
 
-export function displayResults(score, percentage) {
-	document.getElementById('totalScore').textContent = score;
+export function displayResults(percentage) {
+	document.getElementById('totalScore').textContent = Math.round(percentage);
 
 	let label, description;
 

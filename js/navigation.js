@@ -44,10 +44,10 @@ export function nextQuestion() {
 		return;
 	}
 
-	const questionName = selectedOption.name;
+	const questionName = selectedOption.name; // item.id
 	const category = currentCard.dataset.category;
 	appState.answers[questionName] = parseInt(selectedOption.value);
-	appState.categoryScores[category] = parseInt(selectedOption.value);
+	// Per-question store only; categoryScores dihitung saat hasil
 
 	cards[appState.currentQuestion].classList.remove('active');
 	appState.currentQuestion++;

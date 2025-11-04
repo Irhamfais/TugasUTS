@@ -35,9 +35,9 @@ export function createRadarChart(categoryScores) {
 			scales: {
 				r: {
 					beginAtZero: true,
-					max: 10,
+					max: 100,
 					ticks: {
-						stepSize: 2,
+						stepSize: 20,
 						font: { size: 12 }
 					},
 					pointLabels: {

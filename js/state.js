@@ -1,8 +1,9 @@
 // Centralized application state and helpers
+import { countAllQuestions } from './questions.js';
 
 export const appState = {
 	currentQuestion: 0,
-	totalQuestions: 4,
+	totalQuestions: countAllQuestions(),
 	answers: {},
 	categoryScores: {
 		transportasi: 0,

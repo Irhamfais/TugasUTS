@@ -127,6 +127,7 @@ body {
 #assessment {
     display: none;
     animation: slideIn 0.5s ease;
+    margin-top: 40px; /* jarak dari section sebelumnya (Cara Kerja) */
 }
 
 .progress-bar {
