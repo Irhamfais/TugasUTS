@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header class="navbar">
+        <div class="nav-brand">🌿 Eco-Behavior</div>
+        <nav class="nav-links">
+            <a class="nav-link" href="#about">Tentang</a>
+            <a class="nav-link" href="#features">Fitur</a>
+            <a class="nav-link" href="#howto">Cara Kerja</a>
+        </nav>
+    </header>
     <div class="container">
         <!-- Landing Page -->
         <section id="landing">
@@ -15,6 +23,43 @@
                 <h1>Eco-Behavior Scorecard</h1>
                 <p>Ukur jejak karbon pribadi Anda dan temukan cara untuk hidup lebih berkelanjutan. Yuk mulai perjalanan menuju gaya hidup yang lebih ramah lingkungan!</p>
                 <button class="btn-primary" onclick="startAssessment()">Mulai Kalkulasi Skor Eko Anda</button>
+            </div>
+        </section>
+        
+        <!-- About -->
+        <section id="about" style="margin-top: 20px;">
+            <div class="recommendations">
+                <h2>🔎 Tentang</h2>
+                <p style="line-height: 1.7; margin-top: 10px;">
+                    Eco-Behavior Scorecard membantu Anda menilai kebiasaan sehari-hari dalam empat kategori: Transportasi, Konsumsi Makanan, Energi, dan Sampah.
+                    Hasilnya menampilkan skor, grafik radar, dan rekomendasi praktis untuk langkah perbaikan.
+                </p>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features" style="margin-top: 20px;">
+            <div class="recommendations">
+                <h2>✨ Fitur</h2>
+                <ul style="margin-left: 18px; margin-top: 10px; line-height: 1.8;">
+                    <li>Skor Eko total dengan label pencapaian</li>
+                    <li>Grafik radar per kategori</li>
+                    <li>Rekomendasi prioritas yang relevan</li>
+                    <li>Client-side, tanpa simpan data permanen</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section id="howto" style="margin-top: 20px;">
+            <div class="recommendations">
+                <h2>🛠 Cara Kerja</h2>
+                <ol style="margin-left: 18px; margin-top: 10px; line-height: 1.8;">
+                    <li>Jawab 4 pertanyaan singkat</li>
+                    <li>Lihat skor dan grafik</li>
+                    <li>Dapatkan 2 rekomendasi prioritas</li>
+                    <li>Mulai ulang kapan saja</li>
+                </ol>
             </div>
         </section>
 
@@ -180,6 +225,6 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script src="js/main.js"></script>
+    <script type="module" src="js/index.js"></script>
 </body>
 </html>
